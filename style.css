@@ -78,15 +78,68 @@ main {
 }
 
 .book {
-    align-items: end;
-    padding: 10%;
+    flex-direction: column;
 }
 
 .book > .info {
     gap: 8px;
     overflow-x: hidden;
+    padding: 10%;
+    border-top: 1px solid var(--border-color);
 }
 
 .book > .info > span{
     gap: 8px;
+}
+
+.relative {
+    position: relative;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.features {
+    top: 8px;
+    right: 8px;
+    gap: 4px;
+    opacity: 0;
+}
+
+.book > .features > button {
+    width: 32px;
+    height: 32px;
+}
+
+.center-items {
+    align-items: center;
+    justify-content: center;
+}
+
+#delete:hover {
+    background-color: red;
+}
+
+#edit:hover {
+    background-color: orange;
+}
+
+#read-status.not-read:hover {
+    background-color: red;
+}
+
+#read-status.read:hover {
+    background-color: green;
+}
+
+.book > .cover {
+    height: 50%;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+    flex-grow: 1;
+}
+
+.visible {
+    opacity: 1;
 }

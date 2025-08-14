@@ -18,12 +18,17 @@
         </div>
     </header>
     <main class="grid">
-        <div class="book flex">
+        <div class="book flex justify-between relative">
+            <div class="features absolute flex">
+                <button id="edit" class="flex center-items"><img src="./assets/edit_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" alt="edit book details"></button>
+                <button id="read-status" class="flex center-items not-read"><img src="./assets/visibility_off_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" alt="read status"></button>
+                <button id="delete" class="flex center-items"><img src="./assets/delete_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" alt="delete book"></button>
+            </div>
+            <img src="./assets/81qPzeEO5IL._SL1500_.jpg" alt="book cover" class="cover">
             <div class="info grid">
                 <span class="flex"><strong>Title:</strong><span id="title">AoT</span></span>
                 <span class="flex"><strong>Author:</strong><span id="author">Isayama</span></span>
                 <span class="flex"><strong>Pages:</strong><span id="pages">1000</span></span>
-                <span class="flex"><strong>Have read:</strong><span id="pages">Yes</span></span>
             </div>
         </div>
     </main>
