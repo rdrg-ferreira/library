@@ -1,0 +1,72 @@
+:root.dark-theme {
+    --primary-color: rgb(24, 27, 58);
+    --border-color: rgb(245, 235, 235);
+    --font-color: rgb(255, 255, 255);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    color: var(--font-color);
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    grid-template-rows: max-content 1fr;
+    background-color: var(--primary-color);
+}
+
+.grid {
+    display: grid;
+}
+
+.flex {
+    display: flex;
+}
+
+.bold {
+    font-weight: bold
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.align-center {
+    align-items: center;
+}
+
+header {
+    font-size: 2rem;
+    padding: 24px 48px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+header > .actions {
+    gap: 24px;
+}
+
+header > .actions img {
+    width: 40px;
+    height: auto;
+}
+
+a {
+    text-decoration: none;
+}
+
+button {
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
+    background-color: var(--primary-color);
+}
+
+main {
+    padding: 10%;
+}
