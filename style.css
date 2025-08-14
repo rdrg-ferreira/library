@@ -60,13 +60,33 @@ a {
     text-decoration: none;
 }
 
-button {
+button, .book {
     border: 1px solid var(--border-color);
     border-radius: 10px;
-    padding: 0.5rem 1rem;
     background-color: var(--primary-color);
 }
 
+button {
+    padding: 0.5rem 1rem;
+}
+
 main {
+    padding: 5% 10%;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-auto-rows: 320px;
+    gap: 32px;
+}
+
+.book {
+    align-items: end;
     padding: 10%;
+}
+
+.book > .info {
+    gap: 8px;
+    overflow-x: hidden;
+}
+
+.book > .info > span{
+    gap: 8px;
 }
