@@ -1,7 +1,13 @@
-:root.dark-theme {
+:root.dark {
     --primary-color: rgb(24, 27, 58);
     --border-color: rgb(245, 235, 235);
     --font-color: rgb(255, 255, 255);
+}
+
+:root.light {
+    --primary-color: rgb(245, 216, 178);
+    --border-color: rgb(163, 131, 84);
+    --font-color: black;
 }
 
 * {
@@ -88,8 +94,12 @@ main {
     border-top: 1px solid var(--border-color);
 }
 
-.book > .info > span{
+.book > .info > span {
     gap: 8px;
+}
+
+svg {
+    overflow: visible;
 }
 
 .relative {
@@ -126,10 +136,10 @@ main {
 }
 
 #read-status.not-read:hover {
-    background-color: red;
+    background-color: blue;
 }
 
-#read-status.read:hover {
+#read-status:hover {
     background-color: green;
 }
 
@@ -142,4 +152,16 @@ main {
 
 .visible {
     opacity: 1;
+}
+
+#not-read-icon {
+    display: none;
+}
+
+#read-status.not-read > #read-icon {
+    display: none;
+}
+
+#read-status.not-read > #not-read-icon {
+    display: block;
 }

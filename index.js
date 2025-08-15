@@ -1,4 +1,6 @@
 const books = document.querySelectorAll(".book");
+const themeToggler = document.querySelector("#theme-toggler");
+const readStatusButton = document.querySelector("#read-status");
 
 let library = [];
 
@@ -37,3 +39,15 @@ books.forEach(book => {
         console.log("not visible");
     })
 });
+
+themeToggler.addEventListener("click", () => {
+    const root = document.documentElement;
+    const newTheme = root.className === "dark" ? "light" : "dark";
+    root.className = newTheme;
+
+    themeToggler.src = `./assets/${newTheme}-theme.svg`;
+});
+
+readStatusButton.addEventListener("click", () => {
+    readStatusButton.classList.toggle("not-read");
+})
