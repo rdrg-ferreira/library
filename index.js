@@ -38,6 +38,13 @@ function addNewBook(bookData) {
     displayLibrary();
 }
 
+function deleteBook(book) {
+    bookIndex = library.indexOf(library.find((item) => item.id == book.getAttribute("data-id")));
+    if (bookIndex > -1) library.splice(bookIndex, 1);
+
+    displayLibrary();
+}
+
 function displayLibrary() {
     const display = document.querySelector("main");
     display.innerText = ""; // clear display
@@ -49,7 +56,8 @@ function displayLibrary() {
         book.setAttribute("data-id", item.id);
 
         const features = document.importNode(bookFeaturesTemplate.content, true);
-        const readStatusButton = features.querySelector("#read-status");
+        const readStatusButton = features.querySelector(".read-status");
+        const deleteButton = features.querySelector(".delete");
         if (item.haveRead) {
             readStatusButton.classList.remove("not-read");
         }
@@ -68,9 +76,9 @@ function displayLibrary() {
         }
         
         const info = document.importNode(bookInfoTemplate.content, true);
-        info.querySelector("#title").innerText = item.title;
-        info.querySelector("#author").innerText = item.author;
-        info.querySelector("#pages").innerText = item.pages;
+        info.querySelector(".title").innerText = item.title;
+        info.querySelector(".author").innerText = item.author;
+        info.querySelector(".pages").innerText = item.pages;
 
         // append content to element
         book.append(features, coverContainer, info);
@@ -89,6 +97,10 @@ function displayLibrary() {
 
         readStatusButton.addEventListener("click", () => {
             readStatusButton.classList.toggle("not-read");
+        });
+
+        deleteButton.addEventListener("click", (e) => {
+            deleteBook(e.target.closest(".book"));
         });
     });
 }

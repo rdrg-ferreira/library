@@ -134,19 +134,15 @@ svg {
     justify-content: center;
 }
 
-#delete:hover {
+.delete:hover {
     background-color: red;
 }
 
-#edit:hover {
-    background-color: orange;
-}
-
-#read-status.not-read:hover {
+.read-status.not-read:hover {
     background-color: blue;
 }
 
-#read-status:hover {
+.read-status:hover {
     background-color: green;
 }
 
@@ -169,15 +165,15 @@ svg {
     opacity: 1;
 }
 
-#not-read-icon {
+.not-read-icon {
     display: none;
 }
 
-#read-status.not-read > #read-icon {
+.read-status.not-read > .read-icon {
     display: none;
 }
 
-#read-status.not-read > #not-read-icon {
+.read-status.not-read > .not-read-icon {
     display: block;
 }
 

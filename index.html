@@ -23,17 +23,17 @@
     <main class="grid">
         <div class="book flex flex-column justify-between relative">
             <div class="features absolute flex">
-                <button id="read-status" class="flex center-items not-read">
-                    <svg id="not-read-icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor">
+                <button class="read-status flex center-items not-read">
+                    <svg class="not-read-icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor">
                         <title>not read yet</title>
                         <path d="m644-428-58-58q9-47-27-88t-93-32l-58-58q17-8 34.5-12t37.5-4q75 0 127.5 52.5T660-500q0 20-4 37.5T644-428Zm128 126-58-56q38-29 67.5-63.5T832-500q-50-101-143.5-160.5T480-720q-29 0-57 4t-55 12l-62-62q41-17 84-25.5t90-8.5q151 0 269 83.5T920-500q-23 59-60.5 109.5T772-302Zm20 246L624-222q-35 11-70.5 16.5T480-200q-151 0-269-83.5T40-500q21-53 53-98.5t73-81.5L56-792l56-56 736 736-56 56ZM222-624q-29 26-53 57t-41 67q50 101 143.5 160.5T480-280q20 0 39-2.5t39-5.5l-36-38q-11 3-21 4.5t-21 1.5q-75 0-127.5-52.5T300-500q0-11 1.5-21t4.5-21l-84-82Zm319 93Zm-151 75Z"/>
                     </svg>
-                    <svg id="read-icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor">
+                    <svg class="read-icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor">
                         <title>have read</title>
                         <path d="M480-320q75 0 127.5-52.5T660-500q0-75-52.5-127.5T480-680q-75 0-127.5 52.5T300-500q0 75 52.5 127.5T480-320Zm0-72q-45 0-76.5-31.5T372-500q0-45 31.5-76.5T480-608q45 0 76.5 31.5T588-500q0 45-31.5 76.5T480-392Zm0 192q-146 0-266-81.5T40-500q54-137 174-218.5T480-800q146 0 266 81.5T920-500q-54 137-174 218.5T480-200Zm0-300Zm0 220q113 0 207.5-59.5T832-500q-50-101-144.5-160.5T480-720q-113 0-207.5 59.5T128-500q50 101 144.5 160.5T480-280Z"/>
                     </svg>
                 </button>
-                <button id="delete" class="flex center-items">
+                <button class="delete flex center-items">
                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor">
                         <title>delete book</title>
                         <path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/>
@@ -42,9 +42,9 @@
             </div>
             <div class="cover"><img src="./assets/81qPzeEO5IL._SL1500_.jpg" alt="book cover"></div>
             <div class="info grid">
-                <span class="flex"><strong>Title:</strong><span id="title">AoT</span></span>
-                <span class="flex"><strong>Author:</strong><span id="author">Isayama</span></span>
-                <span class="flex"><strong>Pages:</strong><span id="pages">1000</span></span>
+                <span class="flex"><strong>Title:</strong><span class="title">AoT</span></span>
+                <span class="flex"><strong>Author:</strong><span class="author">Isayama</span></span>
+                <span class="flex"><strong>Pages:</strong><span class="pages">1000</span></span>
             </div>
         </div>
     </main>
@@ -58,15 +58,15 @@
                     <div class="required-inputs grid">
                         <div class="input">
                             <label for="title-input">Title</label>
-                            <input type="text" id="title-input" required name="title" min="1">
+                            <input type="text" id="title-input" required name="title" min="1" autocomplete="off">
                         </div>
                         <div class="input">
                             <label for="author-input">Author</label>
-                            <input type="text" id="author-input" required name="author" min="1">
+                            <input type="text" id="author-input" required name="author" min="1" autocomplete="off">
                         </div>
                         <div class="input">
                             <label for="pages-input">Pages</label>
-                            <input type="number" id="pages-input" required min="1" name="pages">
+                            <input type="number" id="pages-input" required min="1" name="pages" autocomplete="off">
                         </div>
                         <fieldset class="input flex flex-column">
                             <legend>Have you read it?</legend>
@@ -74,18 +74,18 @@
                             <div class="flex align-center">
                                 <div class="wrapper">
                                     <label for="have-read-input">Yes</label>
-                                    <input type="radio" id="have-read-input" required name="read" value="true">
+                                    <input type="radio" id="have-read-input" required name="read" value="true" autocomplete="off">
                                 </div>
                                 <div class="wrapper">
                                     <label for="not-read-input">No</label>
-                                    <input type="radio" id="not-read-input" name="read" value="false">
+                                    <input type="radio" id="not-read-input" name="read" value="false" autocomplete="off">
                                 </div>
                             </div>
                         </fieldset>
                     </div>
                     <div class="input">
                         <label for="cover-image">Image of the cover</label>
-                        <input type="file" id="cover-image" accept="image/*" name="cover">
+                        <input type="file" id="cover-image" accept="image/*" name="cover" autocomplete="off">
                     </div>
                     <input type="submit" value="Submit" formmethod="dialog">
                 </form>
@@ -98,17 +98,17 @@
     <!-- template for features included in each book -->
     <template id="book-features">
         <div class="features absolute flex">
-            <button id="read-status" class="flex center-items not-read">
-                <svg id="not-read-icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor">
+            <button class="read-status flex center-items not-read">
+                <svg class="not-read-icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor">
                     <title>not read yet</title>
                     <path d="m644-428-58-58q9-47-27-88t-93-32l-58-58q17-8 34.5-12t37.5-4q75 0 127.5 52.5T660-500q0 20-4 37.5T644-428Zm128 126-58-56q38-29 67.5-63.5T832-500q-50-101-143.5-160.5T480-720q-29 0-57 4t-55 12l-62-62q41-17 84-25.5t90-8.5q151 0 269 83.5T920-500q-23 59-60.5 109.5T772-302Zm20 246L624-222q-35 11-70.5 16.5T480-200q-151 0-269-83.5T40-500q21-53 53-98.5t73-81.5L56-792l56-56 736 736-56 56ZM222-624q-29 26-53 57t-41 67q50 101 143.5 160.5T480-280q20 0 39-2.5t39-5.5l-36-38q-11 3-21 4.5t-21 1.5q-75 0-127.5-52.5T300-500q0-11 1.5-21t4.5-21l-84-82Zm319 93Zm-151 75Z"/>
                 </svg>
-                <svg id="read-icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor">
+                <svg class="read-icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor">
                     <title>have read</title>
                     <path d="M480-320q75 0 127.5-52.5T660-500q0-75-52.5-127.5T480-680q-75 0-127.5 52.5T300-500q0 75 52.5 127.5T480-320Zm0-72q-45 0-76.5-31.5T372-500q0-45 31.5-76.5T480-608q45 0 76.5 31.5T588-500q0 45-31.5 76.5T480-392Zm0 192q-146 0-266-81.5T40-500q54-137 174-218.5T480-800q146 0 266 81.5T920-500q-54 137-174 218.5T480-200Zm0-300Zm0 220q113 0 207.5-59.5T832-500q-50-101-144.5-160.5T480-720q-113 0-207.5 59.5T128-500q50 101 144.5 160.5T480-280Z"/>
                 </svg>
             </button>
-            <button id="delete" class="flex center-items">
+            <button class="delete flex center-items">
                 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor">
                     <title>delete book</title>
                     <path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/>
@@ -120,9 +120,9 @@
     <!-- template for book information spans -->
     <template id="book-info">
         <div class="info grid">
-            <span class="flex"><strong>Title:</strong><span id="title"></span></span>
-            <span class="flex"><strong>Author:</strong><span id="author"></span></span>
-            <span class="flex"><strong>Pages:</strong><span id="pages"></span></span>
+            <span class="flex"><strong>Title:</strong><span class="title"></span></span>
+            <span class="flex"><strong>Author:</strong><span class="author"></span></span>
+            <span class="flex"><strong>Pages:</strong><span class="pages"></span></span>
         </div>
     </template>
     
