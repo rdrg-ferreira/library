@@ -37,6 +37,10 @@ body {
     display: flex;
 }
 
+.flex-column {
+    flex-direction: column;
+}
+
 .bold {
     font-weight: bold
 }
@@ -68,7 +72,7 @@ a {
     text-decoration: none;
 }
 
-button, .book, dialog, input[type="submit"] {
+button, .book, dialog, input[type="submit"], input[type="text"], input[type="number"] {
     border: 1px solid var(--border-color);
     border-radius: 10px;
     background-color: var(--primary-color);
@@ -88,10 +92,6 @@ main {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     grid-auto-rows: 320px;
     gap: 32px;
-}
-
-.book {
-    flex-direction: column;
 }
 
 .book > .info {
@@ -211,7 +211,6 @@ dialog > .wrapper {
 }
 
 dialog > .wrapper > .left {
-    flex-direction: column;
     gap: 8px;
     padding: 24px;
 }
@@ -223,5 +222,35 @@ form > .required-inputs > fieldset.input > legend::after {
 }
 
 input[type="text"], input[type="number"] {
-    color: black;
+    padding: 8px;
+}
+
+form {
+    gap: 16px;
+}
+
+div.input {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.required-inputs {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    column-gap: 24px;
+    row-gap: 12px;
+}
+
+fieldset > div {
+    justify-content: space-around;
+    height: 100%;
+}
+
+fieldset {
+    border: none;
+}
+
+input[type="submit"] {
+    width: fit-content;
 }

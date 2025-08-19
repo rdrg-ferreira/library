@@ -1,13 +1,13 @@
-const books = document.querySelectorAll(".book");
 const themeToggler = document.querySelector("#theme-toggler");
-const readStatusButton = document.querySelector("#read-status");
 const addBookButton = document.querySelector("#add-book");
-const editBookButton = document.querySelector("#edit");
 const bookModal = document.querySelector("#modal-book-details");
 const closeModalButton = document.querySelector("#close-modal");
 const form = bookModal.querySelector("form");
+const bookFeaturesTemplate = document.querySelector("#book-features");
+const bookInfoTemplate = document.querySelector("#book-info");
 
 let library = [];
+const colors = ['red', 'green', 'blue', 'orange', 'yellow'];
 
 function Book(title, author, pages, haveRead, cover) {
     this.title = title;
@@ -18,38 +18,82 @@ function Book(title, author, pages, haveRead, cover) {
     this.id = crypto.randomUUID();
 }
 
+function formatData(data) {
+    if (data.cover.size === 0) {
+        data.cover = colors[Math.floor(Math.random() * colors.length)];
+    }
+
+    if (data.read === "true") data.read = true;
+    else data.read = false;
+
+    return data;
+}
+
 function addNewBook(bookData) {
+    bookData = formatData(bookData);
+
     const book = new Book(bookData.title, bookData.author, bookData.pages, bookData.read, bookData.cover);
     library.push(book)
 
     displayLibrary();
 }
 
-function editBook(book, newData) {
-
-}
-
 function displayLibrary() {
+    const display = document.querySelector("main");
+    display.innerText = ""; // clear display
 
+    library.forEach(item => {
+        // create element and its content
+        const book = document.createElement("div");
+        book.classList.add("book", "flex", "flex-column", "justify-between", "relative");
+        book.setAttribute("data-id", item.id);
+
+        const features = document.importNode(bookFeaturesTemplate.content, true);
+        const readStatusButton = features.querySelector("#read-status");
+        if (item.haveRead) {
+            readStatusButton.classList.remove("not-read");
+        }
+
+        const coverContainer = document.createElement("div");
+        coverContainer.classList.add("cover");
+
+        if (colors.includes(item.cover)) {
+            coverContainer.style.backgroundColor = item.cover;
+        } else {
+            const coverImg = document.createElement("img");
+            coverImg.src = URL.createObjectURL(item.cover);
+            coverImg.alt = "book cover";
+
+            coverContainer.appendChild(coverImg);
+        }
+        
+        const info = document.importNode(bookInfoTemplate.content, true);
+        info.querySelector("#title").innerText = item.title;
+        info.querySelector("#author").innerText = item.author;
+        info.querySelector("#pages").innerText = item.pages;
+
+        // append content to element
+        book.append(features, coverContainer, info);
+        display.appendChild(book);
+
+        // add event listeners
+        book.addEventListener("mouseover", () => {
+            const bookOptions = book.querySelector(".features");
+            bookOptions.classList.add("visible");
+        });
+
+        book.addEventListener("mouseout", () => {
+            const bookOptions = book.querySelector(".features");
+            bookOptions.classList.remove("visible");
+        });
+
+        readStatusButton.addEventListener("click", () => {
+            readStatusButton.classList.toggle("not-read");
+        });
+    });
 }
 
 // event listeners
-
-books.forEach(book => {
-    book.addEventListener("mouseover", () => {
-        const bookOptions = book.querySelector(".features");
-        bookOptions.classList.add("visible");
-    });
-});
-
-
-books.forEach(book => {
-    book.addEventListener("mouseout", () => {
-        const bookOptions = book.querySelector(".features");
-        bookOptions.classList.remove("visible");
-    });
-});
-
 themeToggler.addEventListener("click", () => {
     const root = document.documentElement;
     const newTheme = root.className === "dark" ? "light" : "dark";
@@ -58,19 +102,8 @@ themeToggler.addEventListener("click", () => {
     themeToggler.src = `./assets/${newTheme}-theme.svg`;
 });
 
-readStatusButton.addEventListener("click", () => {
-    readStatusButton.classList.toggle("not-read");
-});
-
 addBookButton.addEventListener("click", () => {
-    bookModal.querySelector("h1").innerText = "Add a new book";
     bookModal.showModal();
-});
-
-editBookButton.addEventListener("click", (e) => {
-    bookModal.querySelector("h1").innerText = "Edit book details";
-    bookModal.showModal();
-    bookModal.bookToEdit = e.target.closest(".book");
 });
 
 form.addEventListener("submit", (e) => {
